@@ -1,0 +1,8 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="checkout_submit_all_after">
+        <observer name="log_text" instance="Bansi\FirstModule\Observer\LogTextatCheckout" />
+    </event>
+   <!--   <event name="çustom_event">
+        <observer name="greeting" instance="Bansi\FirstModule\Observer\OurObserver" />
+    </event> -->
+</config>

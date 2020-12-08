@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Bansi\FirstModule\Controller\Page\HelloWorld">
+        <arguments>
+                <argument name="heavyService" xsi:type="object">Bansi\FirstModule\Model\HeavyService\Proxy
+                </argument>
+            </arguments>
+    </type>
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+                <argument name="commands" xsi:type="array">
+                    <item name="hello_world" xsi:type="object">Bansi\FirstModule\Console\Command\HelloWorld</item>
+                </argument>
+            </arguments>
+    </type>
+    <!-- <preference for="Bansi\FirstModule\NotMagento\PenInterface" type="Bansi\FirstModule\NotMagento\RedPen" /> -->
+     <!--  <preference for="Magento\Catalog\Api\ProductRepositoryInterface" type="Bansi\FirstModule\Model\CustomImplementionProduct" /> -->
+        <preference for="Bansi\FirstModule\Api\PenInterface" type="Bansi\FirstModule\Model\Pen" />
+         <preference for="Bansi\FirstModule\Api\Color" type="Bansi\FirstModule\Model\Yellow" />
+          <preference for="Bansi\FirstModule\Api\Size" type="Bansi\FirstModule\Model\Big" />
+       	  <preference for="Bansi\FirstModule\Api\Brightness" type="Bansi\FirstModule\Model\Medium" />
+         <type name="Bansi\FirstModule\Model\Pen">
+         	<arguments>
+         		<argument name="color" xsi:type="object" shared="false">virtualType1</argument>
+         		<argument name="size" xsi:type="object" shared="false">Bansi\FirstModule\Model\Small</argument>
+         	</arguments>
+         </type>
+          <virtualType name="virtualType1" type="Bansi\FirstModule\Model\Red">
+        <arguments>
+            <argument name="brightness" xsi:type="object">Bansi\FirstModule\Model\Low</argument>
+        </arguments>
+    </virtualType>
+         <type name="Bansi\FirstModule\Model\Student">
+         	<arguments>
+         		<argument name="name" xsi:type="string" >Bansi</argument>
+         		<argument name="age" xsi:type="number" >20</argument>
+         		<argument name="scorces" xsi:type="array" >
+         			<item name="maths" xsi:type="number">100</item>
+         			<item name="hindi" xsi:type="number">80</item>
+         		</argument>
+         	</arguments>
+         </type>
+        <!--  <type name="Bansi\FirstModule\Controller\Page\HelloWorld">
+        <plugin name="plugin1" type="Bansi\FirstModule\Plugin\PluginSolution" sortOrder="10"/>
+        <plugin name="plugin2" type="Bansi\FirstModule\Plugin\PluginSolution2" sortOrder="20"/>
+    </type> -->
+    
+  </config>
