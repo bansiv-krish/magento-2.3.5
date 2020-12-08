@@ -1,0 +1,18 @@
+<?php
+$viewmodel=$block->getData('view_model');
+$hello=$viewmodel->getHelloworld();
+$array=$viewmodel->getArray();
+ ?>
+ <ul>
+<?php foreach ($array as $key => $value) { ?>
+	
+		
+		<li><?php echo $value; ?></li>
+	
+<?php } ?>
+</ul>
+<h1><?php echo $hello; ?></h1>
+<h1><?php echo $this->getShowHello(); ?></h1>
+<h2><?php print_r($this->getShowArray());?></h2>
+<h2><?php echo $viewmodel->getProductName(); ?></h2>
+<h1><?php echo rand(1,100); ?></h1>
