@@ -2,8 +2,9 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
      <add id="Bansi_CustomAdmin::menu" title="Custom Menu" module="Bansi_CustomAdmin" sortOrder="10" resource="Bansi_CustomAdmin::menu"/>
+      <add id="Bansi_CustomAdmin::index" title="Index" module="Bansi_CustomAdmin" sortOrder="410" parent="Bansi_CustomAdmin::menu" action="customadmin/index/index" resource="Bansi_CustomAdmin::index"/>
      <add id="Bansi_CustomAdmin::create" title="Create" module="Bansi_CustomAdmin" sortOrder="10" parent="Bansi_CustomAdmin::menu" action="customadmin/create/index" resource="Bansi_CustomAdmin::create"/>
-     <add id="Bansi_CustomAdmin::delete" title="Delete" module="Bansi_CustomAdmin" sortOrder="20" parent="Bansi_CustomAdmin::menu" action="customadmin/delete/index" resource="Vendor_MyModule::delete"/>
-     <add id="Bansi_CustomAdmin::view" title="View" module="Bansi_CustomAdmin" sortOrder="30" parent="Bansi_CustomAdmin::menu" action="customadmin/view/index" resource="Vendor_MyModule::view"/>
+     <add id="Bansi_CustomAdmin::delete" title="Delete" module="Bansi_CustomAdmin" sortOrder="20" parent="Bansi_CustomAdmin::menu" action="customadmin/delete/index" resource="Bansi_CustomAdmin::delete"/>
+     <add id="Bansi_CustomAdmin::view" title="View" module="Bansi_CustomAdmin" sortOrder="30" parent="Bansi_CustomAdmin::menu" action="customadmin/view/index" resource="Bansi_CustomAdmin::view"/>
     </menu>
 </config>

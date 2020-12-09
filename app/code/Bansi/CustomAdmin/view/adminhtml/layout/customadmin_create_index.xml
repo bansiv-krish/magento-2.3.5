@@ -12,7 +12,7 @@
                     <argument name="text" xsi:type="string">Page Content Create</argument>
                 </arguments>
             </block>
-            <block class="Magento\Framework\View\Element\Text" aclResource="Vendor_Module::view_additional">
+            <block class="Magento\Framework\View\Element\Text" aclResource="Bansi_CustomAdmin::view_additional">
                 <arguments>
                     <argument name="text" xsi:type="string"> - additional</argument>
                 </arguments>
