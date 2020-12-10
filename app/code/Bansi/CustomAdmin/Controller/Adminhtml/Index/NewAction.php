@@ -4,32 +4,33 @@
  * See COPYING.txt for license details.
  */
 namespace Bansi\CustomAdmin\Controller\Adminhtml\Index;
-
+use Magento\Framework\App\ResponseInterface;
+use Magento\Backend\Model\View\Result\ForwardFactory;
 /**
  * Catalog index page controller.
  */
-class Index extends \Magento\Backend\App\Action 
+class NewAction extends \Magento\Backend\App\Action
 {
-	protected $resultPageFactory;
+	protected $forwardfactory;
 
 	
 	    protected function _isAllowed()
 	{
-	 return $this->_authorization->isAllowed('Bansi_CustomAdmin::index');
+	 return $this->_authorization->isAllowed('Bansi_CustomAdmin::menu');
 	}
     
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory
+        ForwardFactory $forwardfactory
     ) {
         parent::__construct($context);
-        $this->resultPageFactory = $resultPageFactory;
+        $this->forwardfactory = $forwardfactory;
     }
 
     public function execute()
     {
     
-     $resultPage = $this->resultPageFactory->create();
-     return $resultPage;
+     $resultforward = $this->forwardfactory->create();
+     return $resultforward->forward('edit');
     }
 }
