@@ -15,9 +15,9 @@
         <item name="back" xsi:type="string">Bansi\CustomAdmin\Block\Adminhtml\Index\Edit\BackButton</item>
         <item name="delete" xsi:type="string">Bansi\CustomAdmin\Block\Adminhtml\Index\Edit\DeleteButton</item>
         <item name="reset" xsi:type="string">Bansi\CustomAdmin\Block\Adminhtml\Index\Edit\ResetButton</item>
-       <!--  <item name="save" xsi:type="string">Bansi\CustomAdmin\Block\Adminhtml\Index\Edit\SaveButton</item>
+        <item name="save" xsi:type="string">Bansi\CustomAdmin\Block\Adminhtml\Index\Edit\SaveButton</item>
         <item name="save_and_continue" xsi:type="string">Bansi\CustomAdmin\Block\Adminhtml\Index\Edit\SaveAndContinueButton</item>
-         -->
+        
     </item>  
     </argument>
 
@@ -28,7 +28,7 @@
             </item>
         </argument>
         <settings>
-            <submitUrl path="cms/page/save"/>
+            <submitUrl path="*/*/save"/>
         </settings>
         <dataProvider class="Bansi\CustomAdmin\Model\Index\DataProvider" name="greeting_index_form_data_source">
             <settings>
@@ -37,10 +37,11 @@
             </settings>
         </dataProvider>
     </dataSource>
-    <fieldset name="general">
+    <fieldset name="general" sortOrder="999">
+
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
-                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="collapsible" xsi:type="boolean">false</item>
                 <item name="label" xsi:type="string" translate="true">General</item>
                 <item name="sortOrder" xsi:type="number">20</item>
             </item>

@@ -15,12 +15,12 @@
         </item>
      </item>
   </argument>
-  <dataSource name="dev_grid_category_listing_data_source">
+  <dataSource name="message_list_data_source" component="Magento_Ui/js/grid/provider">
    <argument name="dataProvider" xsi:type="configurableObject">
        <argument name="class" xsi:type="string">MessageListingDataProvider</argument>
        <argument name="name" xsi:type="string">message_list_data_source</argument>
        <argument name="primaryFieldName" xsi:type="string">greeting_id</argument>
-       <argument name="requestFieldName" xsi:type="string">greeting_id</argument>
+       <argument name="requestFieldName" xsi:type="string">id</argument>
        <argument name="data" xsi:type="array">
          <item name="config" xsi:type="array">
            <item name="update_url" xsi:type="url" path="mui/index/render"/>
@@ -43,23 +43,73 @@
     <bookmark name="bookmarks"/>
     <columnsControls name="columns_controls"/>
     <filterSearch name="fulltext"/>
-    <filters name="listing_filters">
+   <filters name="listing_filters">
             <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="templates" xsi:type="array">
-                        <item name="filters" xsi:type="array">
-                            <item name="select" xsi:type="array">
-                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
-                                <item name="template" xsi:type="string">ui/grid/filters/elements/ui-select</item>
-                            </item>
-                        </item>
-                    </item>
+                <item name="observers" xsi:type="array">
+                    <item name="column" xsi:type="string">column</item>
                 </item>
             </argument>
-    </filters>
+            <settings>
+                <templates>
+                    <filters>
+                        <select>
+                            <param name="template" xsi:type="string">ui/grid/filters/elements/ui-select</param>
+                            <param name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</param>
+                        </select>
+                    </filters>
+                </templates>
+            </settings>
+            
+        </filters>
+    <massaction name="listing_massaction">
+      
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected items?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                    <url path="*/*/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+            
+            <action name="edit">
+                <settings>
+                    <callback>
+                        <target>editSelected</target>
+                        <provider>message_list.message_list.message_columns_editor</provider>
+                    </callback>
+                    <type>edit</type>
+                    <label translate="true">Edit</label>
+                </settings>
+            </action>
+        </massaction>
     <paging name="listing_paging"/>
   </listingToolbar>
   <columns name="message_columns">
+     <settings>
+            <editorConfig>
+                <param name="clientConfig" xsi:type="array">
+                    <item name="saveUrl" xsi:type="url" path="*/*/inlineEdit"/>
+                    <item name="validateBeforeSave" xsi:type="boolean">false</item>
+                </param>
+                <param name="indexField" xsi:type="string">greeting_id</param>
+                <param name="enabled" xsi:type="boolean">true</param>
+                <param name="selectProvider" xsi:type="string">message_list.message_list.message_columns.ids</param>
+            </editorConfig>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">message_list.message_list.message_columns_editor</item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
     <selectionsColumn name="ids">
        <argument name="data" xsi:type="array">
            <item name="config" xsi:type="array">
@@ -77,14 +127,26 @@
     <column name="message">
       <settings>
          <filter>text</filter>
-         <bodyTmpl>ui/grid/cells/text</bodyTmpl>
+         <editor>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                    <editorType>text</editorType>
+                </editor>
+
+    
          <label translate="true">Message</label>
      </settings>
     </column>
     <column name="season">
       <settings>
          <filter>text</filter>
-         <bodyTmpl>ui/grid/cells/text</bodyTmpl>
+         <editor>
+                    <validation>
+                          <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                    <editorType>text</editorType>
+                </editor>
          <label translate="true">Season</label>
      </settings>
     </column>

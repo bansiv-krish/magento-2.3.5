@@ -20,7 +20,7 @@ class Actions extends Column
 {
     /** Url path */
     const CMS_URL_PATH_EDIT = 'customadmin/index/edit';
-    const CMS_URL_PATH_DELETE = 'customadmin/delete/index';
+    const CMS_URL_PATH_DELETE = 'customadmin/index/delete';
     const CMS_URL_PATH_VIEW = 'customadmin/view/index';
 
     /**
