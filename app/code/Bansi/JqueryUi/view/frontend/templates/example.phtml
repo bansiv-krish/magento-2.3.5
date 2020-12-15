@@ -1,0 +1,33 @@
+<?php declare(strict_types=1);
+
+?>
+<script type="text/x-magento-init">
+	{
+        "*":{
+            "Magento_Ui/js/core/app": {
+                "components":{
+                   
+                "mutator":{
+                    "component":"Bansi_JqueryUi/js/value-mutator",
+                    "template":"Bansi_JqueryUi/button",
+                    "children":{
+                     "display":{
+                        "component":"Bansi_JqueryUi/js/value-display",
+                         "template":"Bansi_JqueryUi/display"
+                        }
+                    }
+                     
+                     
+                }
+            }
+        }
+    }
+}
+</script>
+<!-- <div data-bind="scope: 'statefull-example-component'">
+    <span>Your Input:</span>
+<input data-bind="textInput: input" autofocus="">
+</div> -->
+<div data-bind="scope: 'mutator'">
+    <!--template: getTemplate() --><!-- /ko-->
+</div>

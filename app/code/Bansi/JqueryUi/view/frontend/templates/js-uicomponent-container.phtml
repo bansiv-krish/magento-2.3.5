@@ -1,0 +1,36 @@
+<?php declare(strict_types=1);
+
+?>
+<script type="text/x-magento-init">
+	{
+        "*":{
+            "Magento_Ui/js/core/app": {
+                "components":{
+                    "exampleUiComponent":{
+                    "component":"uiComponent",
+                     
+                     "children":{
+                     	"child1":{
+                     	"component":"uiComponent",
+                     "template":"Bansi_JqueryUi/info",
+                     "displayArea":"groupA"
+                     
+                     },
+                     "child2":{
+                     	"component":"uiComponent",
+                     "template":"Bansi_JqueryUi/info",
+                      "displayArea":"groupA"
+                     }
+                 	}
+                	}
+                }
+            }
+        }
+    }
+</script>
+<div data-bind="scope: 'exampleUiComponent'">
+	
+<!--ko foreach:getRegion('groupA') -->
+	<!--ko template: getTemplate() --><!-- /ko-->
+	<!-- /ko-->
+</div>

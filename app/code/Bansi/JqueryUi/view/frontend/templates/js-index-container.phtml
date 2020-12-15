@@ -7,7 +7,8 @@
             "Magento_Ui/js/core/app": {
                 "components":{
                     "startSimple":{
-                    "component":"Bansi_JqueryUi/js/plain-view-model"
+                    "component":"Bansi_JqueryUi/js/plain-view-model",
+                    "base_url":"<?= $block->escapeJs($block->getBaseUrl()) ?>"
                 	}
                 }
             }
@@ -15,7 +16,19 @@
     }
 </script>
 <div data-bind="scope: 'startSimple'">
-	<div>sds</div>
-	<h2 data-bind="text: title"></h2>
-	<div>test</div>
+	
+	<!-- <h2 data-bind="text: title"></h2>
+	<pre data-bind="text: JSON.stringify(config,null,2)"></pre> -->
+	<!-- <pre data-bind="text: output"></pre> -->
+	<h3 data-bind="text: label"></h3>
+	<table data-bind="foreach: items">
+		<tr>
+			<td data-bind="text: name"></td>
+			<td data-bind="text: qty"></td>
+			<td data-bind="text: price"></td>
+			<td data-bind="text: $parent.rowTotal($data)"></td>
+		</tr>
+	</table>
+	<div>Addtional Charge:<span data-bind="text: additional_charge"></span></div>
+	<strong>Total: <span data-bind="text: total()"></span></strong>
 </div>
