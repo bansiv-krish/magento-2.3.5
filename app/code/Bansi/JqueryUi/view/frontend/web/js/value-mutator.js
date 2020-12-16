@@ -9,7 +9,7 @@ define([
         return state.increment;
     },
     increment:function(){
-        state.counter=state.increment;
+        state.counter += state.increment;
     }
    });
 });

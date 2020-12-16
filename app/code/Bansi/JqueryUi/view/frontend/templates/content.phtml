@@ -1,0 +1,24 @@
+<?php 
+$imageUrl=$block->getViewFileUrl('Bansi_JqueryUi/images/Hydrangeas.jpg');
+?>
+<script type="text/x-magento-init">
+	{
+        "*":{
+            "Magento_Ui/js/core/app": {
+                "components":{
+                   
+                "my-component":{
+                    "component":"Bansi_JqueryUi/js/viewmodel",
+                    "imageUrl":"<?= $imageUrl ?>"
+             }
+            }
+        }
+    }
+}
+</script>
+<div data-bind="scope: 'my-component'">
+	
+	<!--ko template: 'Bansi_JqueryUi/example'-->
+	<!--/ko--> 
+
+</div>
